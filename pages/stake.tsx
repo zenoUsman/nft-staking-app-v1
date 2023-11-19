@@ -18,6 +18,7 @@ import {
   tokenContractAddress,
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
+import { disconnect } from "process";
 
 const Stake: NextPage = () => {
   const address = useAddress();
@@ -68,12 +69,16 @@ const Stake: NextPage = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>Stake Your NFTs here</h1>
+    
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
 
+      
       {!address ? (
         <ConnectWallet />
       ) : (
-        <>
+        
+<>
+        <ConnectWallet/>
           <h2>Your Tokens</h2>
           <div className={styles.tokenGrid}>
             <div className={styles.tokenItem}>

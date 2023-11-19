@@ -2,11 +2,13 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
-
+import Navbar from "../components/NavBar";
 const Home: NextPage = () => {
   const router = useRouter();
 
   return (
+    <>
+    <Navbar/>
     <div className={styles.container}>
       {/* Top Section */}
       <h1 className={styles.h1}>thirdweb Deploy - Custom Staking Contract</h1>
@@ -39,6 +41,7 @@ const Home: NextPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
