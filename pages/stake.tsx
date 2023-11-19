@@ -68,6 +68,13 @@ const Stake: NextPage = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>Stake Your NFTs</h1>
+      <h3>{nft.metadata.name}</h3>
+                <Web3Button
+                  contractAddress={stakingContractAddress}
+                  action={() => stakeNft(nft.metadata.id)}
+                >
+                  Stake
+                </Web3Button>
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
 
       {!address ? (
