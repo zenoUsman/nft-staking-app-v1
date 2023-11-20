@@ -7,8 +7,9 @@ const Navbar: React.FC = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
+        
         <Link href="/">
-        <Image src='/icons/logo.jpg' alt='no image' width={64} height={64} />
+        <Image src='/icons/logo.png' alt='no image' width={65} height={65}/>
         </Link>
   
       </div>

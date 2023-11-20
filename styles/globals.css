@@ -8,12 +8,7 @@
 }
 
 /* Set core body defaults */
-body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-  padding-bottom: 250px;
-}
+
 
 /* Inherit fonts for inputs and buttons */
 input,
@@ -30,13 +25,24 @@ select {
   --tw-color1-hover: #9333ea;
 }
 
+
+/* styles/globals.css */
 body {
-  background: var(--tw-color1-hover);
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background: url('/icons/background.jpg') 25%; /* Adjust the path as needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center, center;
+  background-attachment: fixed;
   font-family: "Inter", sans-serif;
   color: var(--white);
   display: flex;
   margin: 0;
 }
+/* Add any other global styles as needed */
+
 
 h2 {
   font-size: 2rem;
@@ -44,7 +50,5 @@ h2 {
 
 /* styles/globals.css */
 img {
-  object-fit: none !important;
-  width: auto !important;
-  height: auto !important;
+  object-fit: contain !important;
 }

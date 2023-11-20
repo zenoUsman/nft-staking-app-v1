@@ -19,6 +19,7 @@ import {
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
 import { disconnect } from "process";
+import Navbar from "../components/NavBar";
 
 const Stake: NextPage = () => {
   const address = useAddress();
@@ -63,12 +64,15 @@ const Stake: NextPage = () => {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>loading drum....</div>;
   }
 
   return (
+    <>
+    <Navbar/>
     <div className={styles.container}>
       <h1 className={styles.h1}>Stake Your NFTs here</h1>
+      <p>Each staked Rzeno Nft will earn 10 $RZO Per day.<br/> The $RZO used to purchase Raffle tickets.</p>
     
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
 
@@ -103,7 +107,7 @@ const Stake: NextPage = () => {
             action={(contract) => contract.call("claimRewards")}
             contractAddress={stakingContractAddress}
           >
-            Claim Rewards here
+            Claim Rewards
           </Web3Button>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
@@ -141,6 +145,7 @@ const Stake: NextPage = () => {
         </>
       )}
     </div>
+    </>
   );
 };
 
