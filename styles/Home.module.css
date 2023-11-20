@@ -204,3 +204,27 @@
   max-height: 200px;
   border-radius: 10px;
 }
+
+/* styles/DotPreloader.module.css */
+
+.preloaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dotPreloader {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #333;
+  margin: 0 4px;
+}
+
+/* Add media queries for responsiveness as needed */

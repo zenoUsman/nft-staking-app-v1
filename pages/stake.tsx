@@ -20,6 +20,7 @@ import {
 import styles from "../styles/Home.module.css";
 import { disconnect } from "process";
 import Navbar from "../components/NavBar";
+import DotPreloader from "../components/preloader";
 
 const Stake: NextPage = () => {
   const address = useAddress();
@@ -64,7 +65,7 @@ const Stake: NextPage = () => {
   }
 
   if (isLoading) {
-    return <div>loading drum....</div>;
+    return <div><DotPreloader/></div>;
   }
 
   return (

@@ -12,7 +12,7 @@ const Home: NextPage = () => {
     <Navbar/>
     <div className={styles.container}>
       {/* Top Section */}
-      <h1 className={styles.h1}>Rzeno NFT staking</h1>
+      <h1 className={styles.h1}>WELCOME to the RZENO staking DoJo</h1>
       <div className={styles.nftBoxGrid}>
         <div
           className={styles.optionSelectBox}
