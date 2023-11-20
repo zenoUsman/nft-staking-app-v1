@@ -1,5 +1,6 @@
 // components/Navbar.tsx
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from "../styles/Home.module.css";
 
 const Navbar: React.FC = () => {
@@ -7,8 +8,9 @@ const Navbar: React.FC = () => {
     <nav className={styles.navbar}>
       <div className={styles.logo}>
         <Link href="/">
-          My Logo
+        <Image src='/icons/logo.jpg' alt='no image' width={64} height={64} />
         </Link>
+  
       </div>
     </nav>
   );
