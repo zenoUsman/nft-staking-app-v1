@@ -73,7 +73,7 @@ const Stake: NextPage = () => {
     <Navbar/>
     <div className={styles.container}>
       <h1 className={styles.h1}>Stake Your NFTs here</h1>
-      <p>Each staked Rzeno Nft will earn 10 $RZO Per day.<br/> The $RZO used to purchase Raffle tickets.</p>
+      <p>Each staked Rzeno Nft will earn 10 $RZO Per day.</p>
     
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
 

@@ -37,7 +37,14 @@ const Home: NextPage = () => {
           <h2 className={styles.selectBoxTitle}>Stake Your NFTs</h2>
           <p className={styles.selectBoxDescription}>
             Stake your bag of <b>Rzeno NFTs</b>{" "}
-            and earn the reward in <b>$Rzeno</b>.
+            and earn the reward in <b>$RZO</b>.
+          </p>
+        </div>
+
+        <div className={styles.optionSelectBox}>
+          {/* Info about $RZO Token */}
+          <p className={styles.selectBoxDescription}>
+           <br/>INFO: Rzeno token ($RZO) is used as a reward currency for our platform. The holder of Rzeno token ($RZO) used this token to participate in different campaign on platfrom like in Raffles and fortune wheel also they can purchase higher trait nfts.We adding more rewards options on our platform, currently this token is not used for trading on any Dex/Cex always check our verified channelS or site ("https://rzeno.com") for any announcement about $Rzeno Token.  <br/> <br/>Staking Contract: Staking contract is build with Thirdweb ERC721 staking contract, security Audit done by Macro ("https://0xmacro.com/").User get reward from this contract till they keep staked there nft in this smart contract, there is no lock option so user can unstake there nfts anytime and claim there rewards.
           </p>
         </div>
       </div>

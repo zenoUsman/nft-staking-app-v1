@@ -82,24 +82,30 @@
 
 /* styles/Navbar.module.css */
 .navbar {
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  color: white;
 }
 
-.logo a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5rem;
+.logo img {
+  width: 50px; /* Adjust the size as needed */
 }
 
-.links a {
-  margin-left: 1rem;
-  color: white;
+.navList {
+  list-style: none;
+  display: flex;
+}
+
+.navList li {
+  margin-right: 15px;
+}
+
+.navList a {
+  color: #fff;
   text-decoration: none;
 }
+
 
 
 /* Between 1200 and 800 */

@@ -6,14 +6,32 @@ import styles from "../styles/Home.module.css";
 const Navbar: React.FC = () => {
   return (
     <nav className={styles.navbar}>
-      <div className={styles.logo}>
+    <div className={styles.logo}>
+      <Link href="/">
         
-        <Link href="/">
-        <Image src='/icons/logo.png' alt='no image' width={65} height={65}/>
+          <img src="/icons/logo.png" alt="Logo" width={65} height={65}/>
+        
+      </Link>
+    </div>
+    <ul className={styles.navList}>
+      <li>
+        <Link href="/stake">
+          Stake
         </Link>
-  
-      </div>
-    </nav>
+      </li>
+      <li>
+        <Link href="/">
+          Raffles
+        </Link>
+      </li>
+      <li>
+        <Link href="/">
+          Fortune Wheel
+        </Link>
+      </li>
+      {/* Add more navigation items as needed */}
+    </ul>
+  </nav>
   );
 };
 
