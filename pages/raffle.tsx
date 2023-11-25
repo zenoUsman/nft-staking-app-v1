@@ -16,7 +16,7 @@ return (
           {/* Info about Raffle system */}
           <p className={styles.selectBoxDescription}>
            <br/> 
-           Each $Rzeno token can participate in Raffle which will be host in daily or weekly basis so there will be mutiple rewards like NFTs from other collections, physcial art, hoodies and much more the only way to get participate is owning $Rzeno token.  
+           Each $Rzeno tokens holder can participate in Raffle which will be host in daily or weekly basis so there will be mutiple rewards like NFTs from other collections, physcial art, hoodies and much more the only way to get participate is owning $Rzeno token.  
           </p>
         </div>
         </div>
@@ -24,4 +24,4 @@ return (
 );
 };
 
-export defaultRaffle;
+export default Raffle;
