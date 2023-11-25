@@ -20,12 +20,12 @@ const Navbar: React.FC = () => {
         </Link>
       </li>
       <li>
-        <Link href="/">
+        <Link href="/raffle">
           Raffles
         </Link>
       </li>
       <li>
-        <Link href="/">
+        <Link href="/fortune">
           Fortune Wheel
         </Link>
       </li>
