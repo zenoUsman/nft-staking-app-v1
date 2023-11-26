@@ -12,13 +12,13 @@ import { BigNumber, ethers } from "ethers";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import NFTCard from "../components/NFTCard";
+import Checkbox from "../components/Checkbox";  // Import Checkbox component
 import {
   nftDropContractAddress,
   stakingContractAddress,
   tokenContractAddress,
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
-import { disconnect } from "process";
 import Navbar from "../components/NavBar";
 import DotPreloader from "../components/preloader";
 
@@ -39,6 +39,8 @@ const Stake: NextPage = () => {
   const { data: stakedTokens } = useContractRead(contract, "getStakeInfo", [
     address,
   ]);
+  const [selectedNFTs, setSelectedNFTs] = useState<number[]>([]);
+
 
   useEffect(() => {
     if (!contract || !address) return;
@@ -50,6 +52,37 @@ const Stake: NextPage = () => {
 
     loadClaimableRewards();
   }, [address, contract]);
+
+  const handleNFTCheckboxChange = (tokenId: number, isChecked: boolean) => {
+    if (isChecked) {
+      setSelectedNFTs((prevSelected) => [...prevSelected, tokenId]);
+    } else {
+      setSelectedNFTs((prevSelected) =>
+        prevSelected.filter((id) => id !== tokenId)
+      );
+    }
+  };
+
+  async function handleButtonClick(){
+    if (!address || !ownedNfts || !contract) return;
+
+    const isApproved = await nftDropContract?.isApproved(
+      address,
+      stakingContractAddress
+    );
+    if (!isApproved) {
+      await nftDropContract?.setApprovalForAll(stakingContractAddress, true);
+    }
+
+    const unstakedNfts = ownedNfts.filter(
+      (nft) => !stakedTokens?.[0]?.includes(nft.metadata.id)
+    );
+
+    const nftIds = unstakedNfts.map((nft) => nft.metadata.id);
+    if (nftIds.length > 0) {
+      await contract?.call("stake", [nftIds]);
+    }
+  }
 
   async function stakeNft(id: string) {
     if (!address) return;
@@ -70,82 +103,93 @@ const Stake: NextPage = () => {
 
   return (
     <>
-    <Navbar/>
-    <div className={styles.container}>
-      <h1 className={styles.h1}>Stake Your NFTs here</h1>
-      <p>Each staked Rzeno Nft will earn 10 $RZO Per day.</p>
-    
-      <hr className={`${styles.divider} ${styles.spacerTop}`} />
+      <Navbar />
+      <div className={styles.container}>
+        <h1 className={styles.h1}>Stake Your NFTs here</h1>
+        <p>Each staked Rzeno Nft will earn 10 $RZO Per day.</p>
 
-      
-      {!address ? (
-        <ConnectWallet />
-      ) : (
-        
-<>
-        <ConnectWallet/>
-          <h2>Your Tokens</h2>
-          <div className={styles.tokenGrid}>
-            <div className={styles.tokenItem}>
-              <h3 className={styles.tokenLabel}>Claimable Rewards</h3>
-              <p className={styles.tokenValue}>
-                <b>
-                  {!claimableRewards
-                    ? "Loading..."
-                    : ethers.utils.formatUnits(claimableRewards, 18)}
-                </b>{" "}
-                {tokenBalance?.symbol}
-              </p>
-            </div>
-            <div className={styles.tokenItem}>
-              <h3 className={styles.tokenLabel}>Current Balance</h3>
-              <p className={styles.tokenValue}>
-                <b>{tokenBalance?.displayValue}</b> {tokenBalance?.symbol}
-              </p>
-            </div>
-          </div>
-          <Web3Button
-            action={(contract) => contract.call("claimRewards")}
-            contractAddress={stakingContractAddress}
-          >
-            Claim Rewards
-          </Web3Button>
+        <hr className={`${styles.divider} ${styles.spacerTop}`} />
 
-          <hr className={`${styles.divider} ${styles.spacerTop}`} />
-          <h2>Your Staked NFTs</h2>
-          <div className={styles.nftBoxGrid}>
-            {stakedTokens &&
-              stakedTokens[0]?.map((stakedToken: BigNumber) => (
-                <NFTCard
-                  tokenId={stakedToken.toNumber()}
-                  key={stakedToken.toString()}
-             />
-              ))}
-          </div>
-
-          <hr className={`${styles.divider} ${styles.spacerTop}`} />
-          <h2>Your Unstaked NFTs</h2>
-          <div className={styles.nftBoxGrid}>
-            {ownedNfts?.map((nft) => (
-              <div className={styles.nftBox} key={nft.metadata.id.toString()}>
-                <ThirdwebNftMedia
-                  metadata={nft.metadata}
-                  className={styles.NftMedia}
-                />
-                  <h3>{nft.metadata.name}</h3>
-                
-                <Web3Button
-                  contractAddress={stakingContractAddress}
-                  action={() => stakeNft(nft.metadata.id)}
-                >
-                  Stake
-                </Web3Button>
+        {!address ? (
+          <ConnectWallet />
+        ) : (
+          <>
+            <ConnectWallet />
+            <h2>Your Tokens</h2>
+            <div className={styles.tokenGrid}>
+              <div className={styles.tokenItem}>
+                <h3 className={styles.tokenLabel}>Claimable Rewards</h3>
+                <p className={styles.tokenValue}>
+                  <b>
+                    {!claimableRewards
+                      ? "Loading..."
+                      : ethers.utils.formatUnits(claimableRewards, 18)}
+                  </b>{" "}
+                  {tokenBalance?.symbol}
+                </p>
               </div>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
+              <div className={styles.tokenItem}>
+                <h3 className={styles.tokenLabel}>Current Balance</h3>
+                <p className={styles.tokenValue}>
+                  <b>{tokenBalance?.displayValue}</b> {tokenBalance?.symbol}
+                </p>
+              </div>
+            </div>
+            <Web3Button
+              action={(contract) => contract.call("claimRewards")}
+              contractAddress={stakingContractAddress}
+            >
+              Claim Rewards
+            </Web3Button>
+
+            <hr className={`${styles.divider} ${styles.spacerTop}`} />
+            <h2>Your Staked NFTs</h2>
+            <div className={styles.nftBoxGrid}>
+              {ownedNfts?.map((nft) => (
+                <Checkbox
+                  tokenId={Number(nft.metadata.id)}
+                  key={nft.metadata.id.toString()}
+                  onCheckboxChange={handleNFTCheckboxChange}
+                />
+              ))}
+            </div>
+            <div className={styles.nftBoxGrid}>
+              {stakedTokens &&
+                stakedTokens[0]?.map((stakedToken: BigNumber) => (
+                  <NFTCard
+                    tokenId={stakedToken.toNumber()}
+                    key={stakedToken.toString()}
+                  />
+                ))}
+            </div>
+
+            <hr className={`${styles.divider} ${styles.spacerTop}`} />
+            <h2>Your Unstaked NFTs</h2>
+            <div className={styles.nftBoxGrid}>
+              {ownedNfts?.map((nft) => (
+                <div className={styles.nftBox} key={nft.metadata.id.toString()}>
+                  <ThirdwebNftMedia
+                    metadata={nft.metadata}
+                    className={styles.NftMedia}
+                  />
+                  <h3>{nft.metadata.name}</h3>
+
+                  <Web3Button
+                    contractAddress={stakingContractAddress}
+                    action={() => stakeNft(nft.metadata.id)}
+                  >
+                    Stake
+                  </Web3Button>
+                </div>
+              ))}
+            </div>
+            <Web3Button contractAddress={stakingContractAddress} action={handleButtonClick} 
+            >
+           stake all
+            </Web3Button>
+          </>
+        )}
+      </div>
     </>
   );
 };
