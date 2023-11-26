@@ -63,6 +63,16 @@ const Stake: NextPage = () => {
     }
   };
 
+  const handleWithdrawAllClick = async () => {
+    if (!address || !stakedTokens || !contract) return;
+
+    const stakedNftIds = stakedTokens[0];
+
+    if (stakedNftIds.length > 0) {
+      await contract?.call("withdraw", [stakedNftIds]);
+    }
+  };
+
   async function handleButtonClick(){
     if (!address || !ownedNfts || !contract) return;
 
@@ -83,6 +93,7 @@ const Stake: NextPage = () => {
       await contract?.call("stake", [nftIds]);
     }
   }
+
 
   async function stakeNft(id: string) {
     if (!address) return;
@@ -144,12 +155,13 @@ const Stake: NextPage = () => {
 
             <hr className={`${styles.divider} ${styles.spacerTop}`} />
             <h2>Your Staked NFTs</h2>
+            <Web3Button
+        contractAddress={stakingContractAddress}
+        action={handleWithdrawAllClick}
+      >
+        unstake all
+      </Web3Button>
             <div className={styles.nftBoxGrid}>
-            <Checkbox
-                  tokenId={Number(nft.metadata.id)}
-                  key={nft.metadata.id.toString()}
-                  onCheckboxChange={handleNFTCheckboxChange}
-                />
               {stakedTokens &&
                 stakedTokens[0]?.map((stakedToken: BigNumber) => (
                   <NFTCard
@@ -161,6 +173,10 @@ const Stake: NextPage = () => {
 
             <hr className={`${styles.divider} ${styles.spacerTop}`} />
             <h2>Your Unstaked NFTs</h2>
+            <Web3Button contractAddress={stakingContractAddress} action={handleButtonClick} 
+            >
+           stake all
+            </Web3Button>
             <div className={styles.nftBoxGrid}>
               {ownedNfts?.map((nft) => (
                 <div className={styles.nftBox} key={nft.metadata.id.toString()}>
@@ -184,10 +200,6 @@ const Stake: NextPage = () => {
                 </div>
               ))}
             </div>
-            <Web3Button contractAddress={stakingContractAddress} action={handleButtonClick} 
-            >
-           stake all
-            </Web3Button>
           </>
         )}
       </div>
