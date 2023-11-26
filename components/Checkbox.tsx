@@ -16,14 +16,16 @@ const Checkbox: React.FC<CheckboxProps> = ({ tokenId, onCheckboxChange }) => {
     onCheckboxChange(tokenId, !isChecked);
   };
 
-  return (
-    <div className={styles.nftBox}>
+  return (<div >
+    <div >
       {/* ... (existing code) */}
+
       <input
         type="checkbox"
         checked={isChecked}
         onChange={handleCheckboxChange}
       />
+    </div>
     </div>
   );
 };

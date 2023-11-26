@@ -145,15 +145,11 @@ const Stake: NextPage = () => {
             <hr className={`${styles.divider} ${styles.spacerTop}`} />
             <h2>Your Staked NFTs</h2>
             <div className={styles.nftBoxGrid}>
-              {ownedNfts?.map((nft) => (
-                <Checkbox
+            <Checkbox
                   tokenId={Number(nft.metadata.id)}
                   key={nft.metadata.id.toString()}
                   onCheckboxChange={handleNFTCheckboxChange}
                 />
-              ))}
-            </div>
-            <div className={styles.nftBoxGrid}>
               {stakedTokens &&
                 stakedTokens[0]?.map((stakedToken: BigNumber) => (
                   <NFTCard
@@ -168,6 +164,11 @@ const Stake: NextPage = () => {
             <div className={styles.nftBoxGrid}>
               {ownedNfts?.map((nft) => (
                 <div className={styles.nftBox} key={nft.metadata.id.toString()}>
+                     <Checkbox
+                  tokenId={Number(nft.metadata.id)}
+                  key={nft.metadata.id.toString()}
+                  onCheckboxChange={handleNFTCheckboxChange}
+                />
                   <ThirdwebNftMedia
                     metadata={nft.metadata}
                     className={styles.NftMedia}

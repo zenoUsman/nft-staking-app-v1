@@ -12,7 +12,10 @@
 .h1 {
   margin-bottom: 0px;
 }
-
+.checkbox{
+  width: 5px;
+  height: 5px;
+}
 .explain {
   font-size: 1.125rem;
   max-width: 1200px;
