@@ -159,7 +159,7 @@ const Stake: NextPage = () => {
         contractAddress={stakingContractAddress}
         action={handleWithdrawAllClick}
       >
-        unstake all
+        Unstake all
       </Web3Button>
             <div className={styles.nftBoxGrid}>
               {stakedTokens &&
@@ -175,7 +175,7 @@ const Stake: NextPage = () => {
             <h2>Your Unstaked NFTs</h2>
             <Web3Button contractAddress={stakingContractAddress} action={handleButtonClick} 
             >
-           stake all
+           Stake all
             </Web3Button>
             <div className={styles.nftBoxGrid}>
               {ownedNfts?.map((nft) => (
