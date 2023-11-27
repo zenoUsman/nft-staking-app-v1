@@ -3,12 +3,17 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/NavBar";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   const router = useRouter();
 
   return (
     <>
+     <Head>
+      <link rel="icon" href="/favicon.ico" />
+      <title>Rzeno</title>
+    </Head>
     <Navbar/>
     <div className={styles.container}>
       {/* Top Section */}
