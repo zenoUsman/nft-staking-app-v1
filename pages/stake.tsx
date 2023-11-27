@@ -53,15 +53,6 @@ const Stake: NextPage = () => {
     loadClaimableRewards();
   }, [address, contract]);
 
-  const handleNFTCheckboxChange = (tokenId: number, isChecked: boolean) => {
-    if (isChecked) {
-      setSelectedNFTs((prevSelected) => [...prevSelected, tokenId]);
-    } else {
-      setSelectedNFTs((prevSelected) =>
-        prevSelected.filter((id) => id !== tokenId)
-      );
-    }
-  };
 
   const handleWithdrawAllClick = async () => {
     if (!address || !stakedTokens || !contract) return;
@@ -180,11 +171,6 @@ const Stake: NextPage = () => {
             <div className={styles.nftBoxGrid}>
               {ownedNfts?.map((nft) => (
                 <div className={styles.nftBox} key={nft.metadata.id.toString()}>
-                     <Checkbox
-                  tokenId={Number(nft.metadata.id)}
-                  key={nft.metadata.id.toString()}
-                  onCheckboxChange={handleNFTCheckboxChange}
-                />
                   <ThirdwebNftMedia
                     metadata={nft.metadata}
                     className={styles.NftMedia}
