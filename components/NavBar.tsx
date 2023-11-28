@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
     <div className={styles.logo}>
       <Link href="/">
         
-          <img src="/icons/logo.png" alt="Logo" width={65} height={65}/>
+          <Image src="/icons/logo.png" alt="Logo" width={65} height={65}/>
         
       </Link>
     </div>
