@@ -41,6 +41,7 @@ const Stake: NextPage = () => {
   ]);
   const [selectedNFTs, setSelectedNFTs] = useState<number[]>([]);
 
+  console.log("Number of owned NFTs:", ownedNfts?.length);
 
   useEffect(() => {
     if (!contract || !address) return;
@@ -183,6 +184,7 @@ const Stake: NextPage = () => {
                   >
                     Stake
                   </Web3Button>
+
                 </div>
               ))}
             </div>
