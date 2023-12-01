@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     
     <ThirdwebProvider
       activeChain={activeChain}
-      clientId={process.env.NEXT_PUBLIC_TEMPLATE_CLIENT_ID}
+      clientId={process.env.Client_ID}
     >
       <Component {...pageProps} />
       
