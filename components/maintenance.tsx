@@ -55,33 +55,23 @@ const Maintenance: React.FC = () => {
         }
 
         /* You can add more styles or adjust existing ones for larger screens */
-        @media (max-width: 1024px) {
+        @media (max-width: 1440px) {
           h1 {
-            font-size: 80px; /* Adjust the font size for smaller screens */
+            font-size: 60px;!important /* Adjust the font size for smaller screens */
           }
 
           p {
-            font-size: 80px; /* Adjust the font size for smaller screens */
+            font-size: 50px;!important /* Adjust the font size for smaller screens */
           }
         }
 
         @media (max-width: 1024px) {
           h1 {
-            font-size: 90px; /* Adjust the font size for smaller screens */
+            font-size: 60px;!important /* Adjust the font size for smaller screens */
           }
 
           p {
-            font-size: 90px; /* Adjust the font size for smaller screens */
-          }
-        }
-
-        @media (max-width: 2560px) {
-          h1 {
-            font-size: 90px; /* Adjust the font size for smaller screens */
-          }
-
-          p {
-            font-size: 90px; /* Adjust the font size for smaller screens */
+            font-size: 30px;!important /* Adjust the font size for smaller screens */
           }
         }
 
