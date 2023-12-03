@@ -33,13 +33,13 @@ const Stake: NextPage = () => {
     "token"
   );
   const { contract, isLoading } = useContract(stakingContractAddress);
-  const { data: ownedNfts } = useOwnedNFTs(nftDropContract, address);
+  const { data: ownedNfts, error} = useOwnedNFTs(nftDropContract, address);
   const { data: tokenBalance } = useTokenBalance(tokenContract, address);
   const [claimableRewards, setClaimableRewards] = useState<BigNumber>();
   const { data: stakedTokens } = useContractRead(contract, "getStakeInfo", [
     address,
   ]);
-  const [selectedNFTs, setSelectedNFTs] = useState<number[]>([]);
+  console.log(ownedNfts)
 
   useEffect(() => {
     if (!contract || !address) return;
@@ -97,10 +97,11 @@ const Stake: NextPage = () => {
     }
     await contract?.call("stake", [[id]]);
   }
-
+  
   if (isLoading) {
     return <div><DotPreloader/></div>;
   }
+}
 
   return (
     <>
@@ -168,7 +169,7 @@ const Stake: NextPage = () => {
            Stake all
             </Web3Button>
             <div className={styles.nftBoxGrid}>
-              {ownedNfts?.map((nft) => (
+              {ownedNfts && ownedNfts.length > 0 && ownedNfts?.map((nft) => (
                 <div className={styles.nftBox} key={nft.metadata.id.toString()}>
                   <ThirdwebNftMedia
                     metadata={nft.metadata}
@@ -190,7 +191,9 @@ const Stake: NextPage = () => {
         )}
       </div>
     </>
+     }
   );
 };
+
 
 export default Stake;

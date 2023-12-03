@@ -4,12 +4,14 @@ import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/NavBar";
 import Head from "next/head";
+import Maintenance from "../components/maintenance"
 
 const Home: NextPage = () => {
   const router = useRouter();
 
   return (
     <>
+    <Maintenance>
      <Head>
       <link rel="icon" href="/favicon.ico" />
       <title>Rzeno</title>
@@ -35,7 +37,7 @@ const Home: NextPage = () => {
         <div
           className={styles.optionSelectBox}
           role="button"
-          onClick={() => router.push("/stake")}
+          onClick={() => router.push("/")}
         >
           {/* Staking an NFT */}
           <Image src="/icons/stake.png" alt="token" width={64} height={64} />
@@ -54,6 +56,7 @@ const Home: NextPage = () => {
         </div>
       </div>
     </div>
+    </Maintenance>
     </>
 
   );

@@ -31,11 +31,11 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background: url('/icons/background.jpg') 25%; /* Adjust the path as needed */
-  background-size: cover;
+  /* background: url('/icons/background.jpg')  25%; Adjust the path as needed */
+  /* background-size: cover;
   background-repeat: no-repeat;
   background-position: center, center;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   font-family: "Inter", sans-serif;
   color: var(--white);
   display: flex;
