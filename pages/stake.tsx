@@ -101,7 +101,7 @@ const Stake: NextPage = () => {
   if (isLoading) {
     return <div><DotPreloader/></div>;
   }
-}
+
 
   return (
     <>
@@ -184,14 +184,14 @@ const Stake: NextPage = () => {
                     Stake
                   </Web3Button>
 
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
+                  </div>
+            ))}
+          </div>
+        </>
+      )}
+      
+    </div>
     </>
-     }
   );
 };
 
