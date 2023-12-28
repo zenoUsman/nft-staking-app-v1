@@ -29,6 +29,11 @@ const Navbar: React.FC = () => {
           Fortune Wheel
         </Link>
       </li>
+      <li>
+        <Link href="/event">
+          Christmas Event
+        </Link>
+      </li>
       {/* Add more navigation items as needed */}
     </ul>
   </nav>
