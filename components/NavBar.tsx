@@ -1,7 +1,8 @@
-// components/Navbar.tsx
+// // components/Navbar.tsx
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from "../styles/Home.module.css";
+import { ConnectWallet } from '@thirdweb-dev/react';
 
 const Navbar: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const Navbar: React.FC = () => {
     <div className={styles.logo}>
       <Link href="/">
         
-          <Image src="/icons/logo.png" alt="Logo" width={65} height={65}/>
+          <img src="/icons/logo.png" alt="Logo" width={65} height={65}/>
         
       </Link>
     </div>
@@ -26,14 +27,20 @@ const Navbar: React.FC = () => {
       </li>
       <li>
         <Link href="/fortune">
-          Fortune Wheel
+          Wheel
         </Link>
       </li>
+
       <li>
         <Link href="/event">
-          Christmas Event
+         Christmas
         </Link>
       </li>
+      <ConnectWallet className={styles.button} 
+        modalTitle={"Rzeno"}
+        modalSize={"wide"}
+        welcomeScreen={{}}
+        modalTitleIconUrl={""}/>
       {/* Add more navigation items as needed */}
     </ul>
   </nav>

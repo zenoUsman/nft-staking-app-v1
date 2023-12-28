@@ -123,9 +123,6 @@ const Stake: NextPage = () => {
   
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
   
-          {!address ? (
-            <ConnectWallet />
-          ) : (
             <>
               <ConnectWallet />
               <h2>Your Tokens</h2>
@@ -226,7 +223,7 @@ const Stake: NextPage = () => {
                 </button>
               </div>
             </>
-          )}
+         
         </div>
       </>
     );
