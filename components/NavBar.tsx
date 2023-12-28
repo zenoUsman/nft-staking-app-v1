@@ -40,8 +40,8 @@ const Navbar: React.FC = () => {
         modalTitle={"Rzeno"}
         modalSize={"compact"}
         dropdownPosition={{
-          side: "bottom", //  "top" | "bottom" | "left" | "right";
-          align: "end", // "start" | "center" | "end";
+          side: "top", //  "top" | "bottom" | "left" | "right";
+          align: "center", // "start" | "center" | "end";
         }}
         modalTitleIconUrl={""}/>
       {/* Add more navigation items as needed */}
