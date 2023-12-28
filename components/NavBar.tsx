@@ -38,8 +38,11 @@ const Navbar: React.FC = () => {
       </li>
       <ConnectWallet className={styles.button} 
         modalTitle={"Rzeno"}
-        modalSize={"wide"}
-        welcomeScreen={{}}
+        modalSize={"compact"}
+        dropdownPosition={{
+          side: "bottom", //  "top" | "bottom" | "left" | "right";
+          align: "end", // "start" | "center" | "end";
+        }}
         modalTitleIconUrl={""}/>
       {/* Add more navigation items as needed */}
     </ul>
