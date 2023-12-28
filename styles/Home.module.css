@@ -4,8 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  position: absolute;
-  padding: 0 25px;
+  position: static;
 }
 
 
@@ -83,33 +82,8 @@
   margin-top: 0px;
 }
 
-/* styles/Navbar.module.css */
-.navbar {
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.logo img {
-  width: 50px; /* Adjust the size as needed */
-}
-
-.navList {
-  list-style: none;
-  display: flex;
-}
-
-.navList li {
-  margin-right: 15px;
-}
-
-.navList a {
-  color: #fff;
-  text-decoration: none;
-}
-
-
+ 
 
 /* Between 1200 and 800 */
 @media only screen and (min-width: 800px) and (max-width: 1200px) {
@@ -237,3 +211,77 @@
 }
 
 /* Add media queries for responsiveness as needed */
+/* Navbar.module.css */
+.navbar {
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;/* Change this to your desired background color */
+  border-radius: 1%;
+  font-size: 25px;
+  font-family: serif;
+}
+
+.logo img {
+  width: 60px; /* Adjust the size as needed */
+  position: inherit;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+}
+
+.navList li {
+  margin-right: 15px;
+}
+
+.navList a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navList a:hover  {
+  color: rgb(255, 7, 7);
+  background-color: rgb(255, 254, 254, 0.2) ;
+}
+
+.button{
+ margin-left: 190px !important;
+ position: relative;
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar {
+    padding-left: 200px; /* Adjust as needed */
+    padding-right: 200px; /* Adjust as needed */
+  }
+  
+  .button {
+    margin-left: 0; /* Reset the margin for larger screens */
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .navbar {
+
+
+    padding-left: 300px; /* Adjust as needed */
+    padding-right: 300px; /* Adjust as needed */
+  }
+  
+  .button {
+    margin-left: 0; /* Reset the margin for larger screens */
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .navbar {
+    padding-left: 400px; /* Adjust as needed */
+    padding-right: 400px; /* Adjust as needed */
+  }
+  
+  .button {
+    margin-left: 0; /* Reset the margin for larger screens */
+  }
+}
