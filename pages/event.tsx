@@ -6,9 +6,9 @@ import { ethers } from "ethers";
 import Navbar from "../components/NavBar";
 
 
-const event: NextPage = () => {
+const Event: NextPage = () => {
   const address = useAddress()
-  const {contract,} = useContract("0xd16144c0EF19eE5382f26dD8FF48D683fa39A87C");
+  const {contract} = useContract("0xd16144c0EF19eE5382f26dD8FF48D683fa39A87C");
   
   const [accumulatedTokens, setAccumulatedTokens] = useState<number | undefined>(undefined);
   const [earnedTokens, setEarnedTokens] = useState<number | undefined>(undefined);
@@ -110,4 +110,4 @@ Claim Reward
     )
 };
 
-export default event;
+export default Event;
