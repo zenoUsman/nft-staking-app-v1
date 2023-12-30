@@ -6,7 +6,7 @@ import { ethers } from "ethers";
 import Navbar from "../components/NavBar";
 
 
-const Home: NextPage = () => {
+const event: NextPage = () => {
   const address = useAddress()
   const {contract,} = useContract("0xd16144c0EF19eE5382f26dD8FF48D683fa39A87C");
   
@@ -110,4 +110,4 @@ Claim Reward
     )
 };
 
-export default Home;
+export default event;
