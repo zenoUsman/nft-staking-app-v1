@@ -89,9 +89,9 @@ const Event: NextPage = () => {
           ["function claimTokens()"],
           signer
         );
-
-        // Call the claimTokens function on the smart contract
-        const transaction = await contractInstance.claimTokens();
+        const transaction = await contractInstance.claimTokens({
+          gasLimit: 500000, // Set a reasonable gas limit for Polygon
+        });
 
         // Wait for the transaction to be mined
         await transaction.wait();
